@@ -1,8 +1,5 @@
 
 new Humanoid(50, 50)
-new Kumanoid(150, 50)
-new Jumanoid(50, 50)
-new BigFoot(150, 50)
 new Bird(450, 50)
 new Roller(150, 60)
 new Roller(250, 80)

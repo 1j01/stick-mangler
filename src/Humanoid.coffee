@@ -5,16 +5,16 @@ class @Humanoid extends Actor
 	constructor: (x, y)->
 		super
 		@neck = @joint(0, 0)
-		@head = @joint(0, 0, @neck)
-		@lelbo = @joint(0, 0, @neck)
-		@lhand = @joint(0, 0, @lelbo)
-		@relbo = @joint(0, 0, @neck)
-		@rhand = @joint(0, 0, @relbo)
-		@tail = @joint(0, 0, @neck)
-		@rknee = @joint(0, 0, @tail)
-		@lknee = @joint(0, 0, @tail)
-		@rfoot = @joint(0, 0, @rknee)
-		@lfoot = @joint(0, 0, @lknee)
+		@head = @joint(0, 0, @neck, 0, 1)
+		@lelbo = @joint(0, 0, @neck, 5, 1)
+		@lhand = @joint(0, 0, @lelbo, 5, 1)
+		@relbo = @joint(0, 0, @neck, 5, 1)
+		@rhand = @joint(0, 0, @relbo, 5, 1)
+		@tail = @joint(0, 0, @neck, 5, 1)
+		@rknee = @joint(0, 0, @tail, 5, 1)
+		@lknee = @joint(0, 0, @tail, 5, 1)
+		@rfoot = @joint(0, 0, @rknee, 5, 1)
+		@lfoot = @joint(0, 0, @lknee, 5, 1)
 		@w = 0
 	
 	update: ->
@@ -35,53 +35,30 @@ class @Humanoid extends Actor
 		@lknee.vy -= 0.1
 		@rknee.vy -= 0.1
 		
-		# animate legs
+		# Animate legs
 		@lknee.vx += cos(TAU*(@w+1/4))*0.5
-		@lknee.vy -= sin(TAU*(@w+1/4))
+		@lknee.vy -= sin(TAU*(@w+1/4))*0.8
 		@rknee.vx += cos(TAU*(@w-1/4))*0.5
-		@rknee.vy -= sin(TAU*(@w-1/4))
+		@rknee.vy -= sin(TAU*(@w-1/4))*0.8
 		# @TODONT: bend knee backwards
 		#@lfoot.vx -= sin(TAU*(@w-1/4))*0.5
 		#@rfoot.vx -= sin(TAU*(@w+1/4))*0.5
 		
-		# animate arms
-		if @weapon
-			if weapon.melee
-				@lhand.vx += sin(TAU*(@w+2/4))*0.5
-				@lhand.vy += cos(TAU*(@w+2/4))*0.5
-				@rhand.vx += sin(TAU*(@w-0/4))*0.5
-				@rhand.vy += cos(TAU*(@w-0/4))*0.5
-				
-				@lelbo.vx += sin(TAU*(@w-3/4))*0.2
-				@lelbo.vy += cos(TAU*(@w-3/4))*0.2
-				@relbo.vx += sin(TAU*(@w-1/4))*0.2
-				@relbo.vy += cos(TAU*(@w-1/4))*0.2
-			else
-				@lhand.vx += sin(TAU*(@w+2/4))*1.5
-				@lhand.vy += cos(TAU*(@w+2/4))*0.5
-				@rhand.vx += sin(TAU*(@w-0/4))*1.5
-				@rhand.vy += cos(TAU*(@w-0/4))*0.5
-				
-		else if @galor
-			@lelbo.vx += sin(TAU*(@w-3/4))*0.5
-			@lelbo.vy += sin(TAU*(@w-3/4))*0.2
-			@relbo.vx += sin(TAU*(@w-1/4))*0.5
-			@relbo.vy += sin(TAU*(@w-1/4))*0.2
-		else
-			@lelbo.vx += sin(TAU*(@w-3/4))*0.3
-			@lelbo.vy += sin(TAU*(@w-3/4))*0.2
-			@relbo.vx += sin(TAU*(@w-1/4))*0.3
-			@relbo.vy += sin(TAU*(@w-1/4))*0.2
-			
-			@lhand.vx += sin(TAU*(@w-3/4))*0.2
-			#@lhand.vy += sin(TAU*(@w-3/4))*0.2
-			@rhand.vx += sin(TAU*(@w-1/4))*0.2
-			#@rhand.vy += sin(TAU*(@w-1/4))*0.2
+		# Animate arms
+		@lelbo.vx += sin(TAU*(@w-3/4))*0.3
+		@lelbo.vy += sin(TAU*(@w-3/4))*0.2
+		@relbo.vx += sin(TAU*(@w-1/4))*0.3
+		@relbo.vy += sin(TAU*(@w-1/4))*0.2
+		
+		@lhand.vx += sin(TAU*(@w-3/4))*0.2
+		#@lhand.vy += sin(TAU*(@w-3/4))*0.2
+		@rhand.vx += sin(TAU*(@w-1/4))*0.2
+		#@rhand.vy += sin(TAU*(@w-1/4))*0.2
 		
 	
 	draw: ->
 		ctx.beginPath()
-		ctx.rect(@head.x-3, @head.y-5, 6, 6)
+		ctx.rect(@neck.x-3, @neck.y-5, 6, 6)
 		ctx.fillStyle = "black"; ctx.fill()
 		ctx.strokeStyle = "white"; ctx.stroke()
 	
