@@ -1,0 +1,14 @@
+{
+  "name": "stick-brangler",
+  "version": "0.0.1",
+  "main": "index.html",
+  "description": "A stick figure game with stick figures",
+  "scripts": {
+    "start": "nwbuild -r .",
+    "build": "nwbuild -b ."
+  },
+  "devDependencies": {
+    "chokidar": "^0.12.5",
+    "node-webkit-builder": "^1.0.4"
+  }
+}

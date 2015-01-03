@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Stikke Rahnjeir</title>
+		<script src="lib/jquery-2.1.3.min.js"></script>
+		<script src="lib/coffee-script.js"></script>
+		<meta name="viewport" content="width=device-width">
+		<style>
+			* {
+				font-family: sans-serif;
+				background: #000;
+				color: #fff;
+				vertical-align: bottom;
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/coffeescript">
+		
+			# Get rid of the shitty broken error handler
+			process.removeAllListeners "uncaughtException"
+			window.CRASHED = false
+			process.on "uncaughtException", (e)->
+				window.CRASHED = true
+				console.error "Caught uncaught exception:", e
+				(require 'nw.gui').Window.get().showDevTools()
+			
+			# Live reload
+			chokidar = require 'chokidar'
+			watcher  = chokidar.watch('.', ignored: /node_modules/)
+			watcher.on 'change', (path)->
+				watcher.close()
+				console.log 'change', path
+				location?.reload()
+			
+		</script>
+		<script type="text/coffeescript" src="src/before.coffee"></script>
+		
+		<script type="text/coffeescript" src="src/Point.coffee"></script>
+		<script type="text/coffeescript" src="src/Constraint.coffee"></script>
+		<script type="text/coffeescript" src="src/Entity.coffee"></script>
+		<script type="text/coffeescript" src="src/Actor.coffee"></script>
+		<script type="text/coffeescript" src="src/Item.coffee"></script>
+		<script type="text/coffeescript" src="src/Controller.coffee"></script>
+		
+		<script type="text/coffeescript" src="src/Box.coffee"></script>
+		<script type="text/coffeescript" src="src/Wheel.coffee"></script>
+		
+		<script type="text/coffeescript" src="src/Humanoid.coffee"></script>
+		<script type="text/coffeescript" src="src/Kumanoid.coffee"></script>
+		<script type="text/coffeescript" src="src/Jumanoid.coffee"></script>
+		<script type="text/coffeescript" src="src/Bird.coffee"></script>
+		<script type="text/coffeescript" src="src/BigFoot.coffee"></script>
+		<script type="text/coffeescript" src="src/Roller.coffee"></script>
+		
+		<script type="text/coffeescript" src="src/main.coffee"></script>
+	</body>
+</html>
