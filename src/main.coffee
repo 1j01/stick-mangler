@@ -11,6 +11,18 @@ new Box(400, 100, 50, 50)
 new Box(400, 100, 25, 50)
 new Box(400, 100, 25, 25)
 
+new Solid [
+	{x: -5, y: 200}
+	{x: 200, y: 200}
+	{x: 450, y: 250}
+	{x: 450, y: 300}
+	{x: 400, y: 450}
+	{x: 400, y: 500}
+	{x: -5, y: 500}
+]
+
+view = scale: 3
+
 do animate = ->
 	requestAnimationFrame animate unless window.CRASHED
 	
@@ -18,20 +30,11 @@ do animate = ->
 	canvas.height = window.innerHeight if canvas.height isnt window.innerHeight
 	
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
+	
 	ctx.save()
-	
-	ctx.scale(3, 3)
-	
-	ctx.beginPath()
-	ctx.rect(0, 200, 500, 500)
-	ctx.draw(0, 255, 0)
+	ctx.scale(view.scale, view.scale)
 	
 	thing.update?() for thing in things by -1
-	
-	for point in points
-		ctx.fillStyle = point.color ? "rgba(255, 255, 0, 1)"
-		#ctx.fillRect(point.x-1, point.y-1, 2, 2)
-	
 	thing.draw?() for thing in things by -1
 	
 	ctx.restore()
@@ -42,9 +45,10 @@ do animate = ->
 dragging = null
 hold = null
 mouse = x: 0, y: 0
+
 $(@).on 'mousemove', (e)->
-	mouse.x = e.clientX / 3
-	mouse.y = e.clientY / 3
+	mouse.x = e.clientX / view.scale
+	mouse.y = e.clientY / view.scale
 
 $(canvas).on 'mousedown', (e)->
 	dragging = points[0]

@@ -19,7 +19,11 @@ class @Point
 		@y += @vy += @fy
 		@fx = 0
 		@fy = 0
-		if @y > 200
-			@vy = -abs(@vy)/5
-			@y = 200
-			@vx /= (@friction + 1)
+		
+		# @TODO have constraints collide as well
+		for solid in solids
+			if solid.collision(@x, @y)
+				@y -= @vy+0.1 # @FIXME magic number
+				@vy = -abs(@vy)/5
+				@vx /= (@friction + 1)
+				# @TODO non-vertical collision with surfaces

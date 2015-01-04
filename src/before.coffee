@@ -1,5 +1,6 @@
 
 @things = []
+@solids = []
 @points = []
 @constraints = []
 
