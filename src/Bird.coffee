@@ -46,21 +46,23 @@ class @Bird extends Actor
 		ctx.fillStyle = "black"
 		ctx.strokeStyle = "white"
 		
-		ctx.beginPath()
-		beakx = @beak.x+@controller.x*2
-		if beakx > @head.x
-			ctx.arc(@head.x, @head.y, 4, TAU*1/4, TAU*3/4, no)
-		else
-			ctx.arc(@head.x, @head.y, 4, TAU*1/4, TAU*3/4, yes)
+		beakx = @beak.x + @controller.x*2
+		beaky = @beak.y
+		dir = atan2(beaky-@head.y, beakx-@head.x)
 		
-		ctx.moveTo(@head.x, @head.y+4)
-		ctx.lineTo(beakx, @beak.y)
-		ctx.lineTo(@head.x, @head.y-4)
+		ctx.save()
+		ctx.translate(@head.x, @head.y)
+		ctx.rotate(dir)
+		
+		ctx.beginPath()
+		
+		ctx.arc(0, 0, 4, TAU/4, -TAU/4, no)
+		ctx.moveTo(0, +4)
+		ctx.lineTo(distance(beakx, beaky, @head.x, @head.y), 0)
+		ctx.lineTo(0, -4)
+		
 		ctx.fill()
 		ctx.stroke()
 		
-		# ctx.beginPath()
-		# ctx.ellipse(@head.x-2, @head.y-2, 4, 4, 0, TAU, 0)
-		# ctx.fill()
-		# ctx.stroke()
+		ctx.restore()
 	
