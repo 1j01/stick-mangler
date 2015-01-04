@@ -20,6 +20,6 @@ class @Wheel extends Entity
 	motorize: (x)->
 		for point in @outerpoints
 			dir = atan2(point.y - @root.y, point.x - @root.x)
-			rotatedir = dir + TAU/4 * x
-			point.vx += sin(rotatedir)
-			point.vy += sin(rotatedir)
+			rotatedir = dir + TAU/4 * sign(x)
+			point.vx += sin(rotatedir) * abs(x)
+			point.vy += sin(rotatedir) * abs(x)

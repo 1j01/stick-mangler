@@ -42,6 +42,13 @@ ctx.draw = (r, g, b, a=1)->
 	dy = y1 - y2
 	d = Math.sqrt(dx*dx + dy*dy)
 
+@sign = (x)->
+	if x > 0
+		+1
+	else if x < 0
+		-1
+	else
+		0
 
 @destroy = (thing)->
 	thing?.destroy?()
