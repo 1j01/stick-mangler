@@ -19,4 +19,5 @@ class @Solid extends Entity
 	
 	draw: ->
 		@path ctx
-		ctx.draw 255, 0, 155
+		ctx.fill "rgba(255, 0, 155, 0.2)"
+		ctx.stroke "rgba(255, 0, 155, 1)"

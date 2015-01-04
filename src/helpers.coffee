@@ -1,16 +1,11 @@
 
-# Note: these canvas helpers are not the ideal solution
-# ctx.fill(color) and ctx.stroke(color) are probably better
+ctx.fill = (color)->
+	ctx.fillStyle = color if color
+	CanvasRenderingContext2D::fill.apply ctx, []
 
-ctx.color = (r, g, b, a=1)->
-	ctx.fillStyle = "rgba(#{r},#{g},#{b},#{a/5})"
-	ctx.strokeStyle = "rgba(#{r},#{g},#{b},#{a})"
-
-ctx.draw = (r, g, b, a=1)->
-	ctx.color(r, g, b, a)
-	ctx.fill()
-	ctx.stroke()
-
+ctx.stroke = (color)->
+	ctx.strokeStyle = color if color
+	CanvasRenderingContext2D::stroke.apply ctx, []
 
 
 @destroy = (thing)->

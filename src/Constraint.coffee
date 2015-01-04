@@ -6,6 +6,7 @@ class @Constraint
 		things.push @
 		@length ?= options?.length ? distance(@a, @b)
 		@force ?= options?.force ? 1
+		@color = "white"
 	
 	update: ->
 		dx = @a.x - @b.x
@@ -21,8 +22,7 @@ class @Constraint
 		@b.fy -= fy
 	
 	draw: ->
-		ctx.strokeStyle = @color ? "rgba(255, 255, 255, 1)"
 		ctx.beginPath()
 		ctx.moveTo(@a.x, @a.y)
 		ctx.lineTo(@b.x, @b.y)
-		ctx.stroke()
+		ctx.stroke @color

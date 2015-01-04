@@ -43,9 +43,6 @@ class @Bird extends Actor
 		@rfoot.vx += sin(TAU*(@w-1/4))*0.2
 	
 	draw: ->
-		ctx.fillStyle = "black"
-		ctx.strokeStyle = "white"
-		
 		beakx = @beak.x + @controller.x*2
 		beaky = @beak.y
 		dir = atan2(beaky-@head.y, beakx-@head.x)
@@ -61,8 +58,8 @@ class @Bird extends Actor
 		ctx.lineTo(distance(beakx, beaky, @head.x, @head.y), 0)
 		ctx.lineTo(0, -4)
 		
-		ctx.fill()
-		ctx.stroke()
+		ctx.fill "black"
+		ctx.stroke "white"
 		
 		ctx.restore()
 	

@@ -26,7 +26,5 @@ class @Roller extends Actor
 		ctx.beginPath()
 		ctx.lineTo(p.x, p.y) for p in @wheel.outerpoints
 		ctx.closePath()
-		ctx.fillStyle = "rgba(0, 0, 0, 0.5)"
-		ctx.fill()
-		ctx.strokeStyle = "white"
-		ctx.stroke()
+		ctx.fill "rgba(0, 0, 0, 0.5)"
+		ctx.stroke "white"

@@ -76,6 +76,6 @@ class @Humanoid extends Actor
 	draw: ->
 		ctx.beginPath()
 		ctx.rect(@top.x-3, @top.y-5, 6, 6)
-		ctx.fillStyle = "black"; ctx.fill()
-		ctx.strokeStyle = "white"; ctx.stroke()
+		ctx.fill "black"
+		ctx.stroke "white"
 	
