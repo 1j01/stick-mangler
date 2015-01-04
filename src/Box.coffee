@@ -7,11 +7,11 @@ class @Box extends Entity
 		@bl = @point(x, y+h)
 		@br = @point(x+w, y+h)
 		# sides
-		@constrain(@tl, @tr, null, 4)
-		@constrain(@tr, @br, null, 4)
-		@constrain(@br, @bl, null, 4)
-		@constrain(@bl, @tl, null, 4)
+		@constrain(@tl, @tr, force: 4)
+		@constrain(@tr, @br, force: 4)
+		@constrain(@br, @bl, force: 4)
+		@constrain(@bl, @tl, force: 4)
 		# x
-		@constrain(@tl, @br, null, 3)
-		@constrain(@bl, @tr, null, 3)
+		@constrain(@tl, @br, force: 3)
+		@constrain(@bl, @tr, force: 3)
 

@@ -1,19 +1,20 @@
 
 class @Constraint
 	
-	constructor: (@a, @b, @length, @force)->
+	constructor: (@a, @b, options)->
 		constraints.push @
 		things.push @
-		@length ?= distance(@a, @b)
-		@force ?= 1
+		@length ?= options?.length ? distance(@a, @b)
+		@force ?= options?.force ? 1
 	
 	update: ->
 		dx = @a.x - @b.x
 		dy = @a.y - @b.y
 		d = Math.sqrt(dx*dx + dy*dy)
-		f = @force / 100
-		fx = dx * (@length - d) * f
-		fy = dy * (@length - d) * f
+		d$ = if d < 1 then 1 else d
+		f = @force / 10
+		fx = dx/d$ * (@length - d) * f
+		fy = dy/d$ * (@length - d) * f
 		@a.fx += fx
 		@a.fy += fy
 		@b.fx -= fx

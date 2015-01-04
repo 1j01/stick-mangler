@@ -6,14 +6,15 @@ class @Entity
 		@points = []
 		@constraints = []
 	
-	constrain: (a, b, length, force)->
-		constraint = new Constraint(a, b, length, force)
+	constrain: (a, b, options)->
+		constraint = new Constraint(a, b, options)
 		@constraints.push constraint
 		constraint
 	
-	point: (x, y)->
+	point: (x=0, y=0)->
 		point = new Point(x, y)
 		@points.push point
+		@root ?= point
 		point
 	
 	destroy: ->

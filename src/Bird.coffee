@@ -5,17 +5,25 @@ class @Bird extends Actor
 	
 	constructor: (x, y)->
 		super
-		@head = @joint(0, 0)
-		@beak = @joint(0, 0, @head)
-		@tail = @joint(0, 0, @head)
-		@rknee = @joint(0, 0, @tail)
-		@lknee = @joint(0, 0, @tail)
-		@rfoot = @joint(0, 0, @rknee)
-		@lfoot = @joint(0, 0, @lknee)
+		
+		@head = @point()
+		@beak = @point()
+		@tail = @point()
+		@rknee = @point()
+		@lknee = @point()
+		@rfoot = @point()
+		@lfoot = @point()
+		
+		@constrain(@beak, @head, length: 5, force: 5)
+		@constrain(@tail, @head, length: 5, force: 5)
+		@lupperleg = @constrain(@tail, @lknee, length: 6, force: 5)
+		@rupperleg = @constrain(@tail, @rknee, length: 6, force: 5)
+		@llowerleg = @constrain(@lknee, @lfoot, length: 6, force: 5)
+		@rlowerleg = @constrain(@rknee, @rfoot, length: 6, force: 5)
+		
 		@w = 0
 	
 	update: ->
-		console.log @beak
 		@head.vy -= 2
 		@beak.vy -= 0.5
 		

@@ -14,7 +14,7 @@ class @Wheel extends Entity
 
 		for point1 in @outerpoints
 			for point2 in @outerpoints
-				constraint = @constrain(point1, point2, distance(point1, point2), 0.5)
+				constraint = @constrain(point1, point2, force: 1)
 				constraint.color = "gray"
 	
 	motorize: (x)->
