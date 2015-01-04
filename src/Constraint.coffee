@@ -11,10 +11,10 @@ class @Constraint
 		dx = @a.x - @b.x
 		dy = @a.y - @b.y
 		d = Math.sqrt(dx*dx + dy*dy)
-		d$ = if d < 1 then 1 else d
+		divisor = if d < 1 then 1 else d
 		f = @force / 10
-		fx = dx/d$ * (@length - d) * f
-		fy = dy/d$ * (@length - d) * f
+		fx = dx/divisor * (@length - d) * f
+		fy = dy/divisor * (@length - d) * f
 		@a.fx += fx
 		@a.fy += fy
 		@b.fx -= fx

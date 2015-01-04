@@ -1,6 +1,6 @@
 
 dragging = null
-hold = null
+constraint = null
 mouse = x: 0, y: 0
 
 $(@).on 'mousemove', (e)->
@@ -8,13 +8,10 @@ $(@).on 'mousemove', (e)->
 	mouse.y = e.clientY / view.scale
 
 $(canvas).on 'mousedown', (e)->
-	dragging = points[0]
-	d = Infinity
-	for point in points when distance(mouse, point) < d and point isnt mouse
-		dragging = point
-		d = distance(mouse, point)
-	hold = new Constraint(dragging, mouse)
+	destroy constraint
+	dragging = nearest Point, from: mouse
+	constraint = new Constraint(mouse, dragging)
 
 $(@).on 'mouseup', (e)->
-	destroy hold
+	destroy constraint
 
