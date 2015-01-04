@@ -1,17 +1,15 @@
 
 class @Solid extends Entity
 	
-	testingcanvas = document.createElement "canvas"
-	testingctx = testingcanvas.getContext "2d"
+	testingcanvas = new Canvas
+	testingctx = testingcanvas.ctx
 	
 	constructor: (@points)->
 		things.push @
 		solids.push @
 	
 	path: (ctx)->
-		ctx.beginPath()
-		ctx.lineTo(p.x, p.y) for p in @points
-		ctx.closePath()
+		ctx.polygon(@points)
 	
 	collision: (x, y)->
 		@path testingctx

@@ -11,6 +11,13 @@ $(canvas).on 'mousedown', (e)->
 	destroy constraint
 	dragging = nearest Point, from: mouse
 	constraint = new Constraint(mouse, dragging)
+	constraint.color = "red"
+	constraint.draw = ->
+		ctx.save()
+		ctx.setLineDash? [5,5,2,2]
+		ctx.line(@a, @b)
+		ctx.stroke @color
+		ctx.restore()
 
 $(@).on 'mouseup', (e)->
 	destroy constraint

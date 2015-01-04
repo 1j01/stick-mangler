@@ -7,8 +7,8 @@
 @EnemyClasses = []
 @PlayerClasses = []
 
-@canvas = document.createElement "canvas"
-@ctx = canvas.getContext("2d")
+@canvas = new Canvas
+{@ctx} = canvas
 $(canvas).appendTo "body"
 
 @view = scale: 3

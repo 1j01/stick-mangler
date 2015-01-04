@@ -22,7 +22,5 @@ class @Constraint
 		@b.fy -= fy
 	
 	draw: ->
-		ctx.beginPath()
-		ctx.moveTo(@a.x, @a.y)
-		ctx.lineTo(@b.x, @b.y)
+		ctx.line(@a, @b)
 		ctx.stroke @color

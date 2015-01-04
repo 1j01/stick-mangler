@@ -23,8 +23,6 @@ class @Roller extends Actor
 					sp.vy += point.vy
 	
 	draw: ->
-		ctx.beginPath()
-		ctx.lineTo(p.x, p.y) for p in @wheel.outerpoints
-		ctx.closePath()
+		ctx.polygon(@wheel.outerpoints)
 		ctx.fill "rgba(0, 0, 0, 0.5)"
 		ctx.stroke "white"

@@ -1,12 +1,32 @@
 
-ctx.fill = (color)->
-	ctx.fillStyle = color if color
-	CanvasRenderingContext2D::fill.apply ctx, []
+@Canvas = ->
+	canvas = document.createElement "canvas"
+	ctx = canvas.ctx = canvas.getContext "2d"
+	
+	ctx.fill = (color)->
+		ctx.fillStyle = color if color
+		CanvasRenderingContext2D::fill.apply ctx, []
 
-ctx.stroke = (color)->
-	ctx.strokeStyle = color if color
-	CanvasRenderingContext2D::stroke.apply ctx, []
+	ctx.stroke = (color)->
+		ctx.strokeStyle = color if color
+		CanvasRenderingContext2D::stroke.apply ctx, []
 
+	ctx.line = (a, b, c, d)->
+		if d?
+			[x1, y1, x2, y2] = [a, b, c, d]
+		else
+			[x1, y1, x2, y2] = [a.x, a.y, b.x, b.y]
+		
+		ctx.beginPath()
+		ctx.moveTo(x1, y1)
+		ctx.lineTo(x2, y2)
+
+	ctx.polygon = (points)->
+		ctx.beginPath()
+		ctx.lineTo(p.x, p.y) for p in points
+		ctx.closePath()
+	
+	canvas
 
 @destroy = (thing)->
 	thing?.destroy?()
