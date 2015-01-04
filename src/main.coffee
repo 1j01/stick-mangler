@@ -5,6 +5,11 @@ do animate = ->
 	canvas.width = window.innerWidth if canvas.width isnt window.innerWidth
 	canvas.height = window.innerHeight if canvas.height isnt window.innerHeight
 	
+	view.scale = min(
+		canvas.width / world.width
+		canvas.height / world.height
+	)
+	
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	
 	ctx.save()

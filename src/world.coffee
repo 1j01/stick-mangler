@@ -11,7 +11,7 @@ new Box(400, 100, 50, 50)
 new Box(400, 100, 25, 50)
 new Box(400, 100, 25, 25)
 
-new Solid [
+ground = new Solid [
 	{x: -5, y: 200}
 	{x: 200, y: 200}
 	{x: 450, y: 250}
@@ -20,3 +20,5 @@ new Solid [
 	{x: 400, y: 500}
 	{x: -5, y: 500}
 ]
+
+@world = {ground, width: 500, height: 300}
