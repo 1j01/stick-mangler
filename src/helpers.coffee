@@ -1,17 +1,6 @@
 
-@things = []
-@solids = []
-@points = []
-@constraints = []
-
-@EnemyClasses = []
-@PlayerClasses = []
-
-
-
-@canvas = document.createElement "canvas"
-@ctx = canvas.getContext("2d")
-$(canvas).appendTo "body"
+# Note: these canvas helpers are not the ideal solution
+# ctx.fill(color) and ctx.stroke(color) are probably better
 
 ctx.color = (r, g, b, a=1)->
 	ctx.fillStyle = "rgba(#{r},#{g},#{b},#{a/5})"
