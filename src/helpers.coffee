@@ -35,7 +35,7 @@
 		array.splice(i, 1) if i >= 0
 
 @nearest = (Class, {from})->
-	throw new Error 'unsupported' if Class isnt Point
+	if Class isnt Point then throw new Error "unsupported"
 	# This helper could be extended in the future to allow searching for
 	# FixedPoints (currently just plain Objects) and even (types of) Actors
 	# Currently it only looks in `points` and only checks the type at the top
@@ -50,3 +50,6 @@
 	arr = if args.length > 1 then args else args[0]
 	arr[~~(Math.random()*arr.length)]
 
+@chance = (x)->
+	unless 0 <= x <= 1 then throw new Error "chance must be between 0 and 1"
+	Math.random() < x

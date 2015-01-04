@@ -35,7 +35,7 @@ class @Humanoid extends Actor
 		fallingness += point.vy for point in @points
 		fallingness /= @points.length
 		
-		# support = Math.min(1, Math.max(0.1, 1 - fallingness))
+		# support = min(1, max(0.1, 1 - fallingness))
 		# this is far from ideal
 		if fallingness < 0.9 or yes
 			# anticombobulations

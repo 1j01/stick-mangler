@@ -1,6 +1,6 @@
 
-{@abs, @pow, @sin, @cos, @atan2} = Math
-@TAU = Math.PI * 2
+{@abs, @pow, @sin, @cos, @atan2, @sqrt, @min, @max, @PI} = Math
+@TAU = PI * 2
 
 @distance = (a, b, c, d)->
 	if d?
@@ -10,7 +10,7 @@
 	
 	dx = x1 - x2
 	dy = y1 - y2
-	d = Math.sqrt(dx*dx + dy*dy)
+	d = sqrt(dx*dx + dy*dy)
 
 @sign = (x)->
 	if x > 0

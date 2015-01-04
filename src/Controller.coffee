@@ -8,12 +8,11 @@ class @Controller
 class @DummyController extends Controller
 	constructor: ->
 		super
-		@x = if Math.random() < 0.5 then +1 else -1
+		@x = choose(+1, -1)
 		@jump = no
 	
 	update: ->
-		if Math.random() < 0.005
-			@x = if Math.random() < 0.5 then +1 else -1
+		@x = choose(+1, -1) if chance(0.005)
 		@x = -1 if @actor.root.x > 400
 		@x = +1 if @actor.root.x < 40
 		@jump = no

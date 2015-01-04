@@ -11,7 +11,7 @@ class @Constraint
 	update: ->
 		dx = @a.x - @b.x
 		dy = @a.y - @b.y
-		d = Math.sqrt(dx*dx + dy*dy)
+		d = sqrt(dx*dx + dy*dy)
 		divisor = if d < 1 then 1 else d
 		f = @force / 10
 		fx = dx/divisor * (@length - d) * f
