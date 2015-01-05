@@ -11,6 +11,11 @@ class @Entity
 		@constraints.push constraint
 		constraint
 	
+	constrainangle: (a, b, c, options)->
+		constraint = new AngularConstraint(a, b, c, options)
+		@constraints.push constraint
+		constraint
+	
 	point: (x=0, y=0)->
 		point = new Point(x, y)
 		@points.push point

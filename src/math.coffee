@@ -19,3 +19,19 @@
 		-1
 	else
 		0
+
+@angleof = (a, b, c, d, e, f)->
+	if f?
+		[x1, y1, x2, y2, x3, y3] = [a, b, c, d, e, f]
+	else
+		[x1, y1, x2, y2, x3, y3] = [a.x, a.y, b.x, b.y, c.x, c.y]
+	
+	lpx = x1 - x2
+	lpy = y1 - y2
+	rpx = x3 - x2
+	rpy = y3 - y2
+	
+	atan2(
+		lpx*rpy - lpy*rpx
+		lpx*rpx + lpy*rpy
+	)

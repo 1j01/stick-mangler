@@ -2,6 +2,7 @@
 class @Box extends Entity
 	constructor: (x, y, w=20, h=20)->
 		super
+		# corners
 		@tl = @point(x, y)
 		@tr = @point(x+w, y)
 		@bl = @point(x, y+h)
@@ -11,7 +12,12 @@ class @Box extends Entity
 		@constrain(@tr, @br, force: 4)
 		@constrain(@br, @bl, force: 4)
 		@constrain(@bl, @tl, force: 4)
-		# x
-		@constrain(@tl, @br, force: 3)
-		@constrain(@bl, @tr, force: 3)
+		# criss-cross
+		@constrain(@tl, @br, force: 1)
+		@constrain(@bl, @tr, force: 1)
+		# angular constraints, for that extra "kick"
+		@constrainangle(@tl, @tr, @br)
+		@constrainangle(@tr, @br, @bl)
+		@constrainangle(@br, @bl, @tl)
+		@constrainangle(@bl, @tl, @tr)
 
