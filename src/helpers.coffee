@@ -30,7 +30,7 @@
 
 @destroy = (thing)->
 	thing?.destroy?()
-	for array in [things, points, constraints]
+	for array in arraysofstuff
 		i = array.indexOf thing
 		array.splice(i, 1) if i >= 0
 

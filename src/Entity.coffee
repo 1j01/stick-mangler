@@ -1,7 +1,7 @@
 
 class @Entity
 	
-	constructor: (x, y)->
+	constructor: (@startx, @starty)->
 		things.push @
 		@points = []
 		@constraints = []
@@ -17,7 +17,7 @@ class @Entity
 		constraint
 	
 	point: (x=0, y=0)->
-		point = new Point(x, y)
+		point = new Point(@startx+x, @starty+y)
 		@points.push point
 		@root ?= point
 		point

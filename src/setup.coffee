@@ -1,8 +1,10 @@
 
-@things = []
-@solids = []
-@points = []
-@constraints = []
+@arraysofstuff = [
+	@things = []
+	@solids = []
+	@points = []
+	@constraints = []
+]
 
 @EnemyClasses = []
 @PlayerClasses = []
