@@ -1,5 +1,5 @@
 
-class @Solid extends Entity
+class @Solid
 	
 	testingcanvas = new Canvas
 	testingctx = testingcanvas.ctx
