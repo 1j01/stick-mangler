@@ -28,6 +28,11 @@ class @Humanoid extends Actor
 		@llowerleg = @constrain(@lknee, @lfoot, length: 6, force: 5)
 		@rlowerleg = @constrain(@rknee, @rfoot, length: 6, force: 5)
 		
+		# @llegmuscle = @constrainangle(@top, @bottom, @lknee, force: 5)
+		# @rlegmuscle = @constrainangle(@top, @bottom, @rknee, force: 5)
+		@lkneemuscle = @constrainangle(@bottom, @lknee, @lfoot, force: 5)
+		@rkneemuscle = @constrainangle(@bottom, @rknee, @rfoot, force: 5)
+		
 		@w = 0
 	
 	update: ->
@@ -53,13 +58,18 @@ class @Humanoid extends Actor
 		@head.vx += 0.05 * @controller.x
 		
 		# Animate legs
-		@lknee.vx += cos(TAU*(@w+1/4))*0.5
-		@lknee.vy -= sin(TAU*(@w+1/4))*0.8
-		@rknee.vx += cos(TAU*(@w-1/4))*0.5
-		@rknee.vy -= sin(TAU*(@w-1/4))*0.8
-		# @FIXME: don't bend knee backwards
-		#@lfoot.vx -= sin(TAU*(@w-1/4))*0.5
-		#@rfoot.vx -= sin(TAU*(@w+1/4))*0.5
+		# @lknee.vx += cos(TAU*(@w+1/4))*0.5
+		# @lknee.vy -= sin(TAU*(@w+1/4))*0.8
+		# @rknee.vx += cos(TAU*(@w-1/4))*0.5
+		# @rknee.vy -= sin(TAU*(@w-1/4))*0.8
+		@lfoot.vx -= sin(TAU*(@w-1/4))*0.5
+		@rfoot.vx -= sin(TAU*(@w+1/4))*0.5
+		# @llegmuscle.angle = TAU * sin(TAU*(@w+1/4)) / 4
+		# @rlegmuscle.angle = TAU * sin(TAU*(@w-1/4)) / 4
+		@lkneemuscle.angle = @controller.x * -TAU * coserp(1/4, 1/2, TAU*(@w+1/4))
+		@rkneemuscle.angle = @controller.x * -TAU * coserp(1/4, 1/2, TAU*(@w-1/4))
+		# FIXME: leg shakeyness
+		# TODO: move via leg animation
 		
 		# Animate arms
 		@lelbo.vx += sin(TAU*(@w-3/4))*0.3

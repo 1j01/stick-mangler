@@ -7,9 +7,9 @@ new Roller(350, 70)
 # new Roller(150, 60, 4, 24)
 # new Roller(250, 80, 4, 34)
 # new Roller(350, 70, 4, 24)
-new Box(100, 100, 25, 25)
-new Box(200, 100, 50, 50)
-new Box(300, 100, 25, 50)
+new Box(100, 50, 25, 25)
+new Box(150, 50, 50, 50)
+new Box(200, 50, 25, 50)
 
 new SpaceInvader
 

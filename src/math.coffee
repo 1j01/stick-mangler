@@ -20,6 +20,10 @@
 	else
 		0
 
+@lerp = (a, b, x)-> a + (b-a)*x
+@sinerp = (a, b, x)-> lerp a, b, (sin(x) + 1) / 2
+@coserp = (a, b, x)-> lerp a, b, (cos(x) + 1) / 2
+
 @angleof = (a, b, c, d, e, f)->
 	if f?
 		[x1, y1, x2, y2, x3, y3] = [a, b, c, d, e, f]
