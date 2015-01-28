@@ -3,13 +3,13 @@ class @Wheel extends Entity
 	constructor: (x, y, @sides, @radius)->
 		super
 		
-		center = @root = @point 0, 0
+		@root = @point 0, 0
 		@outerpoints = for i in [1..@sides]
 			point = @point(
 				sin(TAU * i/sides)*@radius
 				cos(TAU * i/sides)*@radius
 			)
-			@constrain(point, center)
+			@constrain(point, @root)
 			point
 
 		for point1 in @outerpoints

@@ -15,6 +15,8 @@ do animate = ->
 	ctx.save()
 	ctx.scale(view.scale, view.scale)
 	
+	ctx.lineCap = "round"
+	
 	thing.update?() for thing in things by -1
 	thing.draw?() for thing in things by -1
 	
