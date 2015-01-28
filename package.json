@@ -11,5 +11,10 @@
   },
   "devDependencies": {
     "chokidar": "^0.12.5"
+  },
+  "window": {
+    "icon": "img/icon.png",
+    "toolbar": false,
+    "show": false
   }
 }
