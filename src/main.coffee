@@ -1,6 +1,5 @@
 
 do animate = ->
-	requestAnimationFrame animate unless window.CRASHED
 	
 	canvas.width = window.innerWidth if canvas.width isnt window.innerWidth
 	canvas.height = window.innerHeight if canvas.height isnt window.innerHeight
@@ -21,4 +20,8 @@ do animate = ->
 	thing.draw?() for thing in things by -1
 	
 	ctx.restore()
+	
+	console.log "animate?", things
+	lkjlkj
+	# requestAnimationFrame animate
 

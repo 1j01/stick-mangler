@@ -10,7 +10,7 @@
     "nw": "^0.12.0-alpha2"
   },
   "devDependencies": {
-    "chokidar": "^0.12.5"
+    "nw-dev": "^1.3.0"
   },
   "window": {
     "icon": "img/icon.png",
